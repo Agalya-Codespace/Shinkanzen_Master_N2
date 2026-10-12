@@ -11,7 +11,8 @@ RUBY_KEYS = {"t", "q", "opts", "options", "left", "title", "lead", "paras", "ans
 def walk(x, key=None, quiz=False):
     if isinstance(x, dict):
         q = quiz or bool(x.get("noRubyU")) or (x.get("type") == "fill" and re.match(r"d\d+k-", x.get("id", "")))
-        return {k: walk(v, k, q) for k, v in x.items() if k != "noRubyU"}
+        plain = set(x.get("plainKeys", []))  # keys kept exactly as written (e.g. kanji-choice options)
+        return {k: (v if k in plain else walk(v, k, q)) for k, v in x.items() if k not in ("noRubyU", "plainKeys")}
     if isinstance(x, list):
         return [walk(v, key, quiz) for v in x]
     if isinstance(x, str) and key in RUBY_KEYS:
