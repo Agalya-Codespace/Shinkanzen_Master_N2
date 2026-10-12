@@ -435,7 +435,7 @@
   // Audio player with speed control. Shows a note instead when the file is not in the site yet.
   function audioPlayer(src, label) {
     var box = el("div", "player");
-    var a = el("audio"); a.controls = true; a.preload = "none"; a.src = src;
+    var a = el("audio"); a.controls = true; a.preload = "metadata"; a.src = src;
     box.appendChild(el("span", "p-label", "🎧 " + md(label || "")));
     box.appendChild(a);
     var sp = el("div", "speeds");
