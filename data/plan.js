@@ -6,7 +6,7 @@ window.N2_PLAN = {
   notice: "**Day 1 is ready; Days 2–20 are being filled in.** All CD audio plays inside the lessons. For 聴解 tracks from CD A, which you don't have, the site uses a computer read-aloud of the book's printed script.",
   days: [
     { kanji: "pp.2–6 送り仮名, 第1–4回", goi: "1章1課 親類・友人・知人 (pp.2–5)", bunpo: "1課 ～とき・～直後に (pp.8–11)", dokkai: "1部1-1) 対比 例題1–3 (pp.4–9)", chokai: "問題紹介 1 課題理解・2 ポイント理解 (pp.2–5)" },
-    { kanji: "pp.7–11 第5–9回", goi: "1章2課 人の性格・特徴, 3課 人に対する感情・行動 (pp.6–13)", bunpo: "2課 ～している(進行中), 3課 ～後で (pp.12–19)", dokkai: "1部1-1) 対比 練習問題 (pp.10–13)", chokai: "問題紹介 3 概要理解・4 即時応答・5 統合理解 (pp.6–11)" },
+    { kanji: "pp.7–11 第5–9回", goi: "1章2課 人の性格・特徴, 3課 人に対する感情・行動 (pp.6–13)", bunpo: "2課 ～している(進行中), 3課 ～後で (pp.12–19)", dokkai: "1部1-1) 対比 練習問題 (pp.10–13)", chokai: "問題紹介 3 概要理解・4 即時応答・5 統合理解 (pp.6–12)" },
     { kanji: "pp.12–17 第10–14回", goi: "2章1課 食生活, 2課 家事 (pp.14–21)", bunpo: "4課 範囲の始まりと終わり, 5課 ～だけ, 問題1–5課 (pp.20–29)", dokkai: "1部1-2) 言い換え (pp.14–21)", chokai: "Ⅰ-1 似ている音の聞き分け (pp.14–15)" },
     { kanji: "pp.18–23 第15–17回", goi: "2章3課 健康, 3章 趣味・娯楽 (pp.22–29)", bunpo: "6課 ～だけではなく, 7課 ～について (pp.30–37)", dokkai: "1部1-3) 比喩, 1-4) 疑問提示文 (pp.22–31)", chokai: "Ⅰ-2 音の変化や縮約形 (pp.16–17)" },
     { kanji: "pp.24–29 第18–20回", goi: "4章1課 旅行・交通, 2課 自然 (pp.30–37)", bunpo: "8課 ～を基準にして, 9課 ～に関連して (pp.38–45)", dokkai: "1部1-5) 主張表現 (pp.32–37)", chokai: "Ⅱ 即時応答 問題形式, 1-A, 1-B (pp.18–21)" },
