@@ -15,7 +15,7 @@ A static study site that splits the four 新完全マスター N2 books (漢字,
 CD audio lives in `audio/` for personal study:
 
 - `audio/kanji/cd01.mp3` … `cd54.mp3` (Kanji book CD)
-- `audio/chokai/b01.mp3` … `b80.mp3` (Chokai CD B). CD A (`a01.mp3` …) is still to be added.
+- `audio/chokai/b01.mp3` … `b80.mp3` (Chokai CD B). CD A was not available, so `a01.mp3` … are computer read-alouds of the book's printed scripts, made with `tools/tts.py` from `tools/tts/*.txt`.
 
 Browsers block audio on `file://` pages in some setups; if a player stays silent, run `python3 -m http.server` in this folder and open `http://localhost:8000`.
 

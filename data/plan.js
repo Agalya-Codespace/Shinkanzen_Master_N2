@@ -3,7 +3,7 @@
    Kanji: Step 1–3 (pp.2–118). Goi: 第1部・第2部・模擬試験 (pp.2–189).
    Bunpo: 第1部 I–IV, 第2部, 第3部, 模擬試験 (pp.8–207). Dokkai: 第1部–第3部, 模擬試験 (pp.4–). Chokai: 問題紹介, 実力養成編 Ⅰ–Ⅵ, 模擬試験 (pp.2–103). */
 window.N2_PLAN = {
-  notice: "**Day 1 is ready.** Days 2–20 show the planned pages and will be filled in the same way. Kanji CD audio plays inside each dictation. The 聴解 audio you shared is CD B (tracks B01–B80, from Ⅳ ポイント理解 onward); Days 1–11 need CD A, so until it is added those lessons show the printed script instead.",
+  notice: "**Day 1 is ready; Days 2–20 are being filled in.** All CD audio plays inside the lessons. For 聴解 tracks from CD A, which you don't have, the site uses a computer read-aloud of the book's printed script.",
   days: [
     { kanji: "pp.2–6 送り仮名, 第1–4回", goi: "1章1課 親類・友人・知人 (pp.2–5)", bunpo: "1課 ～とき・～直後に (pp.8–11)", dokkai: "1部1-1) 対比 例題1–3 (pp.4–9)", chokai: "問題紹介 1 課題理解・2 ポイント理解 (pp.2–5)" },
     { kanji: "pp.7–11 第5–9回", goi: "1章2課 人の性格・特徴, 3課 人に対する感情・行動 (pp.6–13)", bunpo: "2課 ～している(進行中), 3課 ～後で (pp.12–19)", dokkai: "1部1-1) 対比 練習問題 (pp.10–13)", chokai: "問題紹介 3 概要理解・4 即時応答・5 統合理解 (pp.6–11)" },

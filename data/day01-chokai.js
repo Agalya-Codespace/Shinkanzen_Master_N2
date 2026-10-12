@@ -29,7 +29,7 @@ window.N2_DAYS[1].sections.push({
       type: "audio",
       title: "☆{例題|れいだい}1　CD A01",
       src: "audio/chokai/a01.mp3",
-      label: "CD A · Track 01",
+      label: "A01 · computer read-aloud of the book script",
       t: "この{問題|もんだい}では、まず{質問|しつもん}を{聞|き}いてください。それから{話|はなし}を{聞|き}いて、{問題用紙|もんだいようし}の1から4の{中|なか}から、{最|もっと}もよいものを{一|ひと}つ{選|えら}んでください。\n（イラスト）ア {案内表示|あんないひょうじ}　イ マイク　ウ {机|つくえ}　エ いす　オ ごみ{箱|ばこ}"
     },
     {
@@ -85,7 +85,7 @@ window.N2_DAYS[1].sections.push({
       type: "audio",
       title: "☆{例題|れいだい}2　CD A02",
       src: "audio/chokai/a02.mp3",
-      label: "CD A · Track 02",
+      label: "A02 · computer read-aloud of the book script",
       t: "この{問題|もんだい}では、まず{質問|しつもん}を{聞|き}いてください。そのあと、{問題用紙|もんだいようし}の{選択肢|せんたくし}を{読|よ}んでください。{読|よ}む{時間|じかん}があります。それから{話|はなし}を{聞|き}いて、{問題用紙|もんだいようし}の1から4の{中|なか}から、{最|もっと}もよいものを{一|ひと}つ{選|えら}んでください。"
     },
     {

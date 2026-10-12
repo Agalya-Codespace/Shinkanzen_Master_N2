@@ -478,8 +478,25 @@
       inp.style.border = "1px solid var(--line)"; inp.style.borderRadius = "6px"; inp.style.background = "var(--paper)"; inp.style.color = "var(--ink)";
       var key = "dict-" + b.id + "-" + i;
       inp.value = (state.answers[key] && state.answers[key].val) || "";
-      inp.addEventListener("change", function () { state.answers[key] = { val: inp.value }; save(); });
       li.appendChild(inp);
+      if (b.answers && b.answers[i]) {
+        var model = b.answers[i];
+        var chk = el("button", "small-btn", "Check"); chk.type = "button";
+        var sh = el("button", "small-btn", "Answer"); sh.type = "button";
+        var v = el("span", "verdict");
+        var ans = el("div", "answer-key"); ans.style.flexBasis = "100%"; ans.hidden = true;
+        ans.innerHTML = md(model);
+        var test = function (user) {
+          var ok = norm(inp.value).replace(/[。、]/g, "") === norm(plain(model)).replace(/[。、]/g, "");
+          v.className = "verdict " + (ok ? "ok" : "no"); v.textContent = inp.value ? (ok ? "正解！" : "Not quite") : "";
+          if (!ok && user && inp.value) ans.hidden = false;
+        };
+        chk.addEventListener("click", function () { state.answers[key] = { val: inp.value }; save(); test(true); });
+        sh.addEventListener("click", function () { ans.hidden = !ans.hidden; });
+        li.appendChild(chk); li.appendChild(sh); li.appendChild(v); li.appendChild(ans);
+        if (inp.value) test(false);
+      }
+      inp.addEventListener("change", function () { state.answers[key] = { val: inp.value }; save(); });
       ul.appendChild(li);
     });
     d.appendChild(ul);

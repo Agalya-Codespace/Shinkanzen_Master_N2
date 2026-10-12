@@ -214,12 +214,13 @@ window.N2_DAYS[1].sections.push({
     {
       type: "dictation",
       id: "r1",
+      answers: ["{先月|せんげつ}は{晴|は}れた{日|ひ}が{少|すく}なかった。", "{親|した}しい{友人|ゆうじん}に{日常会話|にちじょうかいわ}を{習|なら}っている。", "{読書|どくしょ}と{旅行|りょこう}とどちらが{好|す}きですか。", "{弟|おとうと}は{古|ふる}い{切手|きって}を{集|あつ}めています。", "{日本|にほん}では{車|くるま}は{左|ひだり}、{人|ひと}は{右|みぎ}を{通|とお}ることになっている。", "この{店|みせ}の{定休日|ていきゅうび}は{木曜日|もくようび}です。", "{私|わたし}は{朝九時|あさくじ}に{始|はじ}まって{夕方五時|ゆうがたごじ}に{終|お}わる{仕事|しごと}がしたい。"],
       audio: "audio/kanji/cd02.mp3",
       audioLabel: "CD 2 · 漢字 N2",
       title: "{第|だい}１{回|かい}　300まで",
       lead: "Ⅰ　ＣＤを{聞|き}いて、{指示|しじ}された{数|かず}の{漢字|かんじ}を{使|つか}って{文|ぶん}を{書|か}きなさい。{数字|すうじ}も{漢字|かんじ}で{書|か}きます。CD2",
       counts: [5, 8, 5, 5, 7, 7, 12],
-      note: "The number in （　） is how many kanji your sentence must use. Play CD track 2 above (pause after each sentence). The answer booklet is not in your PDF, so this site cannot check these; write them here and they stay saved.",
+      note: "The number in （　） is how many kanji your sentence must use. Play CD track 2 above (each sentence is read twice). Type your sentence, then press Check. The model answers were taken from the CD and each one has exactly the number of kanji the book asks for.",
       explain: [
         "Idhu dictation. CD-la oru sentence varum, adha kettu ezhudhanum. (5) na 5 kanji use pannanum. Numbers kooda kanji-la: 三, 十 maadhiri.",
         "'300まで' na: book-oda first 300 kanji list-la irundhu dhaan varum. Mela irukkura player-la CD track play pannunga; oru sentence mudinjadhum pause panni ezhudhunga. Slow-aa kekkanum na 0.75× button use pannunga."
@@ -228,6 +229,7 @@ window.N2_DAYS[1].sections.push({
     {
       type: "dictation",
       id: "r2",
+      answers: ["{一日|いちにち}に{一度|いちど}は{教科書|きょうかしょ}に{目|め}を{通|とお}そう。", "{銀行|ぎんこう}は{三時|さんじ}に{閉|し}まるから{早|はや}く{行|い}きなさい。", "お{昼|ひる}はいつも{会社|かいしゃ}の{食堂|しょくどう}で{食|た}べることにしている。", "あの{有名|ゆうめい}な{作曲家|さっきょくか}は{元歌手|もとかしゅ}だそうだ。", "あれは{東洋一大|とうよういちおお}きい{建物|たてもの}です。", "{私|わたし}は{新聞|しんぶん}の{漢字|かんじ}が{読|よ}めるようになりたい。", "この{土地|とち}の{名物|めいぶつ}をお{送|おく}りしましたので、お{受|う}け{取|と}りください。"],
       audio: "audio/kanji/cd03.mp3",
       audioLabel: "CD 3 · 漢字 N2",
       title: "{第|だい}２{回|かい}　300まで",
@@ -238,6 +240,7 @@ window.N2_DAYS[1].sections.push({
     {
       type: "dictation",
       id: "r3",
+      answers: ["{毎朝四時|まいあさよじ}に{起|お}きて{公園|こうえん}を{走|はし}ることにしている。", "スピーチをする{時|とき}は、{自分|じぶん}の{考|かんが}えを{短|みじか}くまとめて{話|はな}すこと。", "{今年|ことし}は{七月二十日|しちがつはつか}から{夏休|なつやす}みだ。", "{世界|せかい}の{言語|げんご}には{文字|もじ}を{持|も}たないものもある。", "{自転車|じてんしゃ}で{転|ころ}んでしまって{足|あし}が{痛|いた}い。", "{明日|あす}の{午後|ごご}は{大事|だいじ}な{用事|ようじ}で{外出|がいしゅつ}します。", "{父母|ふぼ}の{元気|げんき}な{顔|かお}を{見|み}て{安心|あんしん}した。", "{旅行|りょこう}の{費用|ひよう}は{係|かかり}の{者|もの}が{集金|しゅうきん}します。"],
       audio: "audio/kanji/cd04.mp3",
       audioLabel: "CD 4 · 漢字 N2",
       title: "{第|だい}３{回|かい}　300まで",
@@ -248,6 +251,7 @@ window.N2_DAYS[1].sections.push({
     {
       type: "dictation",
       id: "r4",
+      answers: ["この{用紙|ようし}に{住所|じゅうしょ}、{氏名|しめい}、{生年月日|せいねんがっぴ}と{電話番号|でんわばんごう}を{書|か}いてください。", "{今年|ことし}は{天気|てんき}の{悪|わる}い{日|ひ}が{多|おお}く、{見学者|けんがくしゃ}は{去年|きょねん}の{半分|はんぶん}だ。", "{遠|とお}くに{海|うみ}が{見|み}えるレストランで{昼食|ちゅうしょく}を{取|と}ろう。", "しっかり{働|はたら}いた{後|あと}で{飲|の}むお{茶|ちゃ}はおいしい。", "{台風|たいふう}の{強|つよ}い{風|かぜ}のため、{電線|でんせん}が{切|き}れ、{電気|でんき}が{消|き}えた。", "{安全運転|あんぜんうんてん}で{楽|たの}しい{旅|たび}を。", "{春|はる}の{洋服|ようふく}には{明|あか}るい{色|いろ}が{好|この}まれる。", "{山|やま}の{上|うえ}から{見下|みお}ろすと、{町|まち}も{村|むら}も{小|ちい}さく{見|み}える。"],
       audio: "audio/kanji/cd05.mp3",
       audioLabel: "CD 5 · 漢字 N2",
       title: "{第|だい}４{回|かい}　300まで",
