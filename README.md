@@ -12,10 +12,10 @@ A static study site that splits the four 新完全マスター N2 books (漢字,
 
 ## Audio
 
-The CD audio is not in the repository. Copy the tracks in locally:
+CD audio lives in `audio/` for personal study:
 
-- `audio/kanji/cd01.mp3` … `cd54.mp3` (Kanji book CD, lower-case file names)
-- `audio/chokai/` for the 聴解 Listening book (the Listening tab fills in once its book is transcribed)
+- `audio/kanji/cd01.mp3` … `cd54.mp3` (Kanji book CD)
+- `audio/chokai/b01.mp3` … `b80.mp3` (Chokai CD B). CD A (`a01.mp3` …) is still to be added.
 
 Browsers block audio on `file://` pages in some setups; if a player stays silent, run `python3 -m http.server` in this folder and open `http://localhost:8000`.
 
