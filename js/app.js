@@ -13,9 +13,12 @@
     kanji: { jp: "漢字", en: "Kanji" },
     goi: { jp: "語彙", en: "Vocabulary" },
     bunpo: { jp: "文法", en: "Grammar" },
-    dokkai: { jp: "読解", en: "Reading" }
+    dokkai: { jp: "読解", en: "Reading" },
+    chokai: { jp: "聴解", en: "Listening" }
   };
-  var BOOK_ORDER = ["kanji", "goi", "bunpo", "dokkai"];
+  var BOOK_ORDER = ["kanji", "goi", "bunpo", "dokkai", "chokai"];
+  // A book counts towards progress only on days whose plan lists pages for it.
+  function booksFor(plan) { return BOOK_ORDER.filter(function (bk) { return plan && plan[bk]; }); }
 
   // ---------- storage (always guarded) ----------
   function load() {
@@ -47,6 +50,7 @@
     out = out.replace(/\n/g, "<br>");
     return out;
   }
+  function plain(s) { return String(s).replace(/\{([^|{}]+)\|[^{}]+\}/g, "$1"); }
   function el(tag, cls, html) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -128,10 +132,45 @@
     return d;
   };
 
-  R.grammar = function (b) {
+  // Sensei's own lesson for a grammar point, shown before the book's examples.
+  function teachPanel(t, ctx, id) {
+    var box = el("div", "teach");
+    box.appendChild(el("div", "teach-head", "🎓 Sensei's lesson first · ひらがな + Thanglish"));
+    (t.intro || []).forEach(function (p) { box.appendChild(el("p", "", md(p))); });
+    if (t.pattern) box.appendChild(el("div", "pattern", md(t.pattern)));
+    if (t.examples) {
+      var ol = el("ol", "teach-ex");
+      t.examples.forEach(function (ex) {
+        var li = el("li");
+        li.appendChild(el("div", "jp", md(ex.jp)));
+        if (ex.kana) li.appendChild(el("div", "kana", esc(ex.kana)));
+        li.appendChild(el("div", "th", md(ex.th)));
+        ol.appendChild(li);
+      });
+      box.appendChild(ol);
+    }
+    (t.wrong || []).forEach(function (w) {
+      var nd = el("div", "ng");
+      nd.innerHTML = '<div><span class="mark bad">✕</span>' + md(w.ng) + '</div><div><span class="mark ok">○</span>' + md(w.ok) + '</div><div class="th">' + md(w.th) + "</div>";
+      box.appendChild(nd);
+    });
+    if (t.check && t.check.length) {
+      box.appendChild(el("div", "teach-sub", "✔ Quick check · understood?"));
+      t.check.forEach(function (c, i) {
+        box.appendChild(R.mcq({ id: id + "-chk" + (i + 1), q: c.q, opts: c.opts, keys: c.keys || ["a", "b", "c", "d"], ans: c.ans, explain: c.explain }, ctx, true));
+      });
+    }
+    return box;
+  }
+
+  R.grammar = function (b, ctx) {
     var d = el("div", "block");
     d.appendChild(lineWithExplain("<h3>" + esc(b.no) + "　" + md(b.title) + "</h3>", b.explain));
     if (b.meaning) d.appendChild(el("p", "lead", "⇒ " + md(b.meaning) + (b.tag ? ' <span class="tag">' + esc(b.tag) + "</span>" : "")));
+    if (b.teach) {
+      d.appendChild(teachPanel(b.teach, ctx, b.id || "g" + b.no));
+      d.appendChild(el("div", "teach-sub book", "📖 本書の例文 · the book's examples"));
+    }
     var ul = el("ul", "items");
     b.examples.forEach(function (ex) { ul.appendChild(lineWithExplain(md(ex.t), ex.explain, "li")); });
     d.appendChild(ul);
@@ -169,13 +208,21 @@
     });
     d.appendChild(inner);
     if (score) {
+      var retry = el("button", "small-btn", "↺ Try again"); retry.type = "button";
+      retry.addEventListener("click", function () {
+        qids.forEach(function (q) { delete state.answers[q]; }); save();
+        var fresh = render(b, ctx, false);
+        d.replaceWith(fresh);
+        ctx.onAnswer.forEach(function (f) { f(); });
+      });
       var upd = function () {
         var right = 0, tried = 0;
         qids.forEach(function (q) {
           var a = state.answers[q];
           if (a && a.tried) { tried++; if (a.ok) right++; }
         });
-        score.textContent = "Score: " + right + " / " + qids.length + (tried < qids.length ? "  (" + (qids.length - tried) + " left)" : "");
+        score.innerHTML = '<span class="bar"><i style="width:' + Math.round(right / qids.length * 100) + '%"></i></span><span>Score ' + right + " / " + qids.length + (tried < qids.length ? " · " + (qids.length - tried) + " left" : " · finished") + "</span>";
+        score.appendChild(retry);
       };
       ctx.onAnswer.push(upd); upd();
     }
@@ -207,7 +254,8 @@
   R.mcq = function (b, ctx, nested) {
     var d = qWrap(nested);
     d.appendChild(el("div", "", md(b.q)));
-    var opts = el("div", "opts");
+    var long = b.opts.some(function (o) { return plain(o).length > 14; });
+    var opts = el("div", "opts" + (long ? " stack" : ""));
     var verdict = el("div", "verdict");
     var keys = b.keys || ["a", "b", "c", "d", "e"];
     var btns = b.opts.map(function (o, i) {
@@ -219,7 +267,7 @@
     });
     var ex = addExplain(d, b.explain, "Why? 💡");
     function choose(i, user) {
-      btns.forEach(function (x, j) { x.classList.remove("right", "wrong"); if (j === b.ans) x.classList.add("right"); });
+      btns.forEach(function (x, j) { x.classList.remove("right", "wrong"); x.setAttribute("aria-pressed", j === i ? "true" : "false"); if (j === b.ans) x.classList.add("right"); });
       if (i !== b.ans) btns[i].classList.add("wrong");
       var ok = i === b.ans;
       verdict.className = "verdict " + (ok ? "ok" : "no");
@@ -286,46 +334,133 @@
     return d;
   };
 
+  // Matching (連語): each left phrase gets the shared options as tap buttons, marked the moment you tap.
   R.select = function (b, ctx, nested) {
     var d = qWrap(nested);
     if (b.q) d.appendChild(el("div", "", md(b.q)));
-    var tbl = el("div", "items");
-    var sels = [];
-    b.items.forEach(function (it, i) {
-      var row = el("div", "row");
-      row.appendChild(el("div", "txt", md(it.left)));
-      var s = el("select"); s.id = "sel-" + b.id + "-" + i; s.setAttribute("aria-label", "choose");
-      s.innerHTML = '<option value="">― choose ―</option>' + b.options.map(function (o, j) { return '<option value="' + j + '">' + esc(o.replace(/\{([^|{}]+)\|[^{}]+\}/g, "$1")) + "</option>"; }).join("");
-      var mark = el("span", "verdict");
-      row.appendChild(s); row.appendChild(mark);
-      tbl.appendChild(row);
-      sels.push({ s: s, mark: mark, ans: it.ans });
-    });
-    d.appendChild(tbl);
-    var row = el("div", "row");
-    var chk = el("button", "small-btn", "Check"); chk.type = "button";
-    var verdict = el("span", "verdict");
-    row.appendChild(chk); row.appendChild(verdict);
-    var ex = addExplain(d, b.explain, "Why? 💡");
-    if (ex) row.appendChild(ex.btn);
-    d.appendChild(row);
-    if (ex) d.appendChild(ex.box);
-    function check(user) {
-      var allOk = true, picked = [];
-      sels.forEach(function (x) {
-        var v = x.s.value; picked.push(v);
-        var ok = v !== "" && Number(v) === x.ans;
-        if (!ok) allOk = false;
-        x.mark.className = "verdict " + (ok ? "ok" : "no");
-        x.mark.textContent = v === "" ? "" : ok ? "○" : "×  → " + b.options[x.ans].replace(/\{([^|{}]+)\|[^{}]+\}/g, "$1");
+    var list = el("div", "match");
+    var picks = [];
+    var rows = b.items.map(function (it, i) {
+      var r = el("div", "match-row");
+      r.appendChild(el("div", "left", md(it.left) + '<span class="dash">―</span>'));
+      var opts = el("div", "opts");
+      var btns = b.options.map(function (o, j) {
+        var bt = el("button", "opt chip", md(o));
+        bt.type = "button";
+        bt.setAttribute("aria-label", plain(it.left) + " ― " + plain(o));
+        bt.addEventListener("click", function () { pick(i, j, true); });
+        opts.appendChild(bt);
+        return bt;
       });
-      verdict.className = "verdict " + (allOk ? "ok" : "no");
-      verdict.textContent = allOk ? "全部正解！" : "";
-      if (user) { state.answers[b.id] = { tried: true, ok: allOk, picks: picked }; save(); ctx.onAnswer.forEach(function (f) { f(); }); }
+      r.appendChild(opts);
+      list.appendChild(r);
+      return { btns: btns, ans: it.ans };
+    });
+    d.appendChild(list);
+    var foot = el("div", "row");
+    var verdict = el("span", "verdict");
+    foot.appendChild(verdict);
+    var ex = addExplain(d, b.explain, "Why? 💡");
+    if (ex) foot.appendChild(ex.btn);
+    d.appendChild(foot);
+    if (ex) d.appendChild(ex.box);
+    function pick(i, j, user) {
+      picks[i] = j;
+      var x = rows[i], ok = j === x.ans;
+      x.btns.forEach(function (bt, k) {
+        bt.classList.remove("right", "wrong");
+        bt.setAttribute("aria-pressed", k === j ? "true" : "false");
+        if (k === j) bt.classList.add(ok ? "right" : "wrong");
+      });
+      var all = rows.every(function (r, k) { return picks[k] === r.ans; });
+      var count = rows.filter(function (r, k) { return picks[k] != null; }).length;
+      verdict.className = "verdict " + (all ? "ok" : "");
+      verdict.textContent = all ? "全部正解！ All matched." : count === rows.length ? "Some pairs are wrong. Tap another option." : "";
+      if (user) {
+        state.answers[b.id] = { tried: count === rows.length, ok: all, picks: picks.slice() }; save();
+        ctx.onAnswer.forEach(function (f) { f(); });
+      }
     }
-    chk.addEventListener("click", function () { check(true); });
     var prev = state.answers[b.id];
-    if (prev && prev.picks) { prev.picks.forEach(function (v, i) { if (sels[i]) sels[i].s.value = v; }); check(false); }
+    if (prev && prev.picks) prev.picks.forEach(function (v, i) { if (v != null && v !== "" && rows[i]) pick(i, Number(v), false); });
+    return d;
+  };
+
+  // Word list shown before a Goi or Kanji lesson. Hide a column to quiz yourself; tap a hidden cell to peek.
+  R.wordlist = function (b) {
+    var d = el("div", "block wordlist");
+    var total = b.groups.reduce(function (n, g) { return n + g.words.length; }, 0);
+    d.appendChild(lineWithExplain("<h3>" + md(b.title) + ' <span class="tag">' + total + " words</span></h3>", b.explain));
+    if (b.lead) d.appendChild(el("p", "lead muted", md(b.lead)));
+    var COLS = [["kanji", "漢字"], ["kana", "ひらがな"], ["en", "English"]];
+    var hidden = state.prefs.wlHide || {};
+    var bar = el("div", "wl-bar");
+    bar.appendChild(el("span", "muted", "Quiz yourself · hide:"));
+    var tbls = [];
+    COLS.forEach(function (c) {
+      var t = el("button", "toggle", c[1]); t.type = "button";
+      t.setAttribute("aria-pressed", hidden[c[0]] ? "true" : "false");
+      t.addEventListener("click", function () {
+        hidden[c[0]] = !hidden[c[0]]; state.prefs.wlHide = hidden; save();
+        t.setAttribute("aria-pressed", hidden[c[0]] ? "true" : "false");
+        apply();
+      });
+      bar.appendChild(t);
+    });
+    d.appendChild(bar);
+    b.groups.forEach(function (g) {
+      if (g.h) d.appendChild(el("div", "wl-h", md(g.h)));
+      var wrap = el("div", "tbl-wrap");
+      var tb = el("table", "wl");
+      tb.innerHTML = "<thead><tr><th>漢字</th><th>ひらがな</th><th>English</th></tr></thead><tbody>" +
+        g.words.map(function (w) {
+          return '<tr><td class="c-kanji-w" data-col="kanji">' + md(w[0]) + '</td><td data-col="kana">' + esc(w[1]) + '</td><td data-col="en">' + md(w[2]) + "</td></tr>";
+        }).join("") + "</tbody>";
+      tb.addEventListener("click", function (e) {
+        var td = e.target.closest && e.target.closest("td");
+        if (td) td.classList.toggle("peek");
+      });
+      wrap.appendChild(tb); d.appendChild(wrap); tbls.push(tb);
+    });
+    function apply() {
+      tbls.forEach(function (tb) {
+        COLS.forEach(function (c) { tb.classList.toggle("hide-" + c[0], !!hidden[c[0]]); });
+        Array.prototype.forEach.call(tb.querySelectorAll(".peek"), function (x) { x.classList.remove("peek"); });
+      });
+    }
+    apply();
+    return d;
+  };
+
+  // Audio player with speed control. Shows a note instead when the file is not in the site yet.
+  function audioPlayer(src, label) {
+    var box = el("div", "player");
+    var a = el("audio"); a.controls = true; a.preload = "none"; a.src = src;
+    box.appendChild(el("span", "p-label", "🎧 " + md(label || "")));
+    box.appendChild(a);
+    var sp = el("div", "speeds");
+    [["−5s", -5], ["0.75×", 0.75], ["1×", 1], ["1.25×", 1.25]].forEach(function (s) {
+      var bt = el("button", "small-btn", s[0]); bt.type = "button";
+      bt.addEventListener("click", function () {
+        if (s[1] < 0) a.currentTime = Math.max(0, a.currentTime + s[1]);
+        else { a.playbackRate = s[1]; Array.prototype.forEach.call(sp.children, function (x) { x.classList.remove("on"); }); bt.classList.add("on"); }
+      });
+      if (s[1] === 1) bt.classList.add("on");
+      sp.appendChild(bt);
+    });
+    box.appendChild(sp);
+    a.addEventListener("error", function () {
+      box.classList.add("missing");
+      box.innerHTML = "🎧 " + md(label || "") + ' <span class="muted">· audio file not found (' + esc(src.slice(0, 40)) + ")</span>";
+    });
+    return box;
+  }
+  R.audio = function (b) {
+    var d = el("div", "block");
+    if (b.title) d.appendChild(lineWithExplain("<h3>" + md(b.title) + "</h3>", b.explain));
+    d.appendChild(audioPlayer(b.src, b.label));
+    if (b.t) d.appendChild(el("div", "", md(b.t)));
+    if (b.note) d.appendChild(el("p", "muted", md(b.note)));
     return d;
   };
 
@@ -333,6 +468,7 @@
     var d = el("div", "block");
     d.appendChild(lineWithExplain("<h3>" + md(b.title) + "</h3>", b.explain));
     d.appendChild(el("p", "lead", md(b.lead)));
+    if (b.audio) d.appendChild(audioPlayer(b.audio, b.audioLabel));
     var ul = el("ul", "items");
     b.counts.forEach(function (c, i) {
       var li = el("li", "row");
@@ -360,13 +496,14 @@
   // ---------- progress ----------
   function dayPct(n) {
     var plan = window.N2_PLAN.days[n - 1];
-    var done = BOOK_ORDER.filter(function (bk) { return state.done["d" + n + "-" + bk]; }).length;
-    return { done: done, total: BOOK_ORDER.length, plan: plan };
+    var books = booksFor(plan);
+    var done = books.filter(function (bk) { return state.done["d" + n + "-" + bk]; }).length;
+    return { done: done, total: books.length, plan: plan };
   }
   function overall() {
-    var d = 0;
-    for (var i = 1; i <= 20; i++) d += dayPct(i).done;
-    return { done: d, total: 80 };
+    var d = 0, t = 0;
+    for (var i = 1; i <= 20; i++) { var p = dayPct(i); d += p.done; t += p.total; }
+    return { done: d, total: t };
   }
 
   // ---------- views ----------
@@ -377,7 +514,7 @@
     var w = el("div", "wrap");
     var hero = el("section", "hero");
     hero.appendChild(el("h1", "", "新完全マスター N2 · 20日プラン"));
-    hero.appendChild(el("p", "", "Every day you study a slice of all four books side by side: 漢字 Kanji, 語彙 Vocabulary, 文法 Grammar and 読解 Reading. Press <b>Explain 💡</b> next to anything and your sensei explains it in Thanglish with ひらがな readings. Your progress stays in this browser."));
+    hero.appendChild(el("p", "", "Every day you study a slice of all four books side by side: 漢字 Kanji, 語彙 Vocabulary, 文法 Grammar, 読解 Reading and 聴解 Listening. Press <b>Explain 💡</b> next to anything and your sensei explains it in Thanglish with ひらがな readings. Your progress stays in this browser."));
     var o = overall();
     var ov = el("div", "overall");
     ov.innerHTML = "<span>Overall</span>" + '<span class="bar"><i style="width:' + Math.round(o.done / o.total * 100) + '%"></i></span><span>' + o.done + " / " + o.total + " parts</span>";
@@ -393,8 +530,8 @@
       var a = el("a", "day-card" + (ready ? "" : " locked"));
       a.href = "#day" + n;
       a.innerHTML = '<span class="num"><span>Day <b>' + n + "</b></span>" +
-        '<span class="tag' + (ready ? " ready" : "") + '">' + (ready ? pr.done + "/4 done" : "coming soon") + "</span></span>" +
-        "<ul>" + BOOK_ORDER.map(function (bk) {
+        '<span class="tag' + (ready ? " ready" : "") + '">' + (ready ? pr.done + "/" + pr.total + " done" : "coming soon") + "</span></span>" +
+        "<ul>" + booksFor(p).map(function (bk) {
           return '<li class="c-' + bk + '">' + BOOKS[bk].jp + " · " + md(p[bk]) + "</li>";
         }).join("") + "</ul>";
       li.appendChild(a);
@@ -416,7 +553,7 @@
     w.appendChild(head);
     if (!data) {
       var nb = el("div", "notice", "This day's lessons are not written yet. Planned pages:<br>" +
-        BOOK_ORDER.map(function (bk) { return BOOKS[bk].jp + " " + BOOKS[bk].en + ": " + md(plan[bk]); }).join("<br>"));
+        booksFor(plan).map(function (bk) { return BOOKS[bk].jp + " " + BOOKS[bk].en + ": " + md(plan[bk]); }).join("<br>"));
       w.appendChild(nb);
       main.appendChild(w);
       return;
@@ -434,7 +571,10 @@
       holder.innerHTML = "";
       var sec = data.sections.filter(function (s) { return s.book === bk; })[0];
       var box = el("section", "section c-" + bk);
-      if (!sec) { box.appendChild(el("div", "notice", "No lesson for this book today.")); holder.appendChild(box); return; }
+      if (!sec) {
+        box.appendChild(el("div", "notice", bk === "chokai" ? "The 聴解 Listening lesson for this day will appear here once the listening book and its audio are added to the site." : "No lesson for this book today."));
+        holder.appendChild(box); return;
+      }
       var t = el("div", "sec-title");
       t.innerHTML = "<h2>" + md(sec.title) + '</h2><span class="src">' + md(sec.source) + "</span>";
       box.appendChild(t);
@@ -457,7 +597,7 @@
       var idx = BOOK_ORDER.indexOf(bk);
       var pg = el("div", "pager");
       pg.innerHTML = (idx > 0 ? '<a href="#" data-go="' + BOOK_ORDER[idx - 1] + '">← ' + BOOKS[BOOK_ORDER[idx - 1]].jp + "</a>" : "<span></span>") +
-        (idx < 3 ? '<a href="#" data-go="' + BOOK_ORDER[idx + 1] + '">' + BOOKS[BOOK_ORDER[idx + 1]].jp + " →</a>" : '<a href="#home">All days →</a>');
+        (idx < BOOK_ORDER.length - 1 ? '<a href="#" data-go="' + BOOK_ORDER[idx + 1] + '">' + BOOKS[BOOK_ORDER[idx + 1]].jp + " →</a>" : '<a href="#home">All days →</a>');
       pg.addEventListener("click", function (e) {
         var go = e.target.getAttribute && e.target.getAttribute("data-go");
         if (go) { e.preventDefault(); showBook(go); window.scrollTo(0, 0); }
@@ -468,7 +608,7 @@
     function buildTabs() {
       tabs.innerHTML = "";
       BOOK_ORDER.forEach(function (bk) {
-        var t = el("button", "tab c-" + bk, BOOKS[bk].jp + " " + BOOKS[bk].en + "<small>" + (state.done["d" + n + "-" + bk] ? "✓ done" : md(plan[bk])) + "</small>");
+        var t = el("button", "tab c-" + bk, BOOKS[bk].jp + " " + BOOKS[bk].en + "<small>" + (state.done["d" + n + "-" + bk] ? "✓ done" : plan[bk] ? md(plan[bk]) : "教材待ち") + "</small>");
         t.type = "button"; t.dataset.bk = bk; t.setAttribute("role", "tab");
         t.setAttribute("aria-selected", bk === current ? "true" : "false");
         t.addEventListener("click", function () { showBook(bk); });

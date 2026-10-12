@@ -8,6 +8,97 @@ window.N2_DAYS[1].sections.push({
   source: "新完全マスター語彙 N2 · 第1部 話題別に言葉を学ぼう · pp.2–5",
   blocks: [
     {
+      type: "wordlist",
+      title: "📋 {今日|きょう}の{言葉|ことば}リスト · Today's word list",
+      lead: "Every word from this lesson (■2 言葉, ■3 語形成, ■4 例文). Read the list once, then hide a column and test yourself. Tap a striped cell to peek.",
+      explain: [
+        "Mudhalla indha list-a oru thadava sathama padinga: 漢字 paathu, ひらがな solli, English meaning nenachukkonga.",
+        "Apram 'English' hide pannunga. Kanji + hiragana paathu meaning nyabagam varudhaa nu check pannunga. Adutha round 'ひらがな' hide panni reading test pannunga. Moonu round pannina, indha lesson-oda exercises romba easy-aa irukkum!"
+      ],
+      groups: [
+        { h: "1. {家族|かぞく}／{親類|しんるい}", words: [
+          ["家族", "かぞく", "family"],
+          ["親類", "しんるい", "relatives"],
+          ["祖先", "そせん", "ancestor(s)"],
+          ["子孫", "しそん", "descendant(s)"],
+          ["祖父母", "そふぼ", "grandparents"],
+          ["孫", "まご", "grandchild"],
+          ["三世代", "さんせだい", "three generations"],
+          ["一家", "いっか", "the whole family; a household"],
+          ["集まり", "あつまり", "gathering"],
+          ["親孝行", "おやこうこう", "being good to one's parents"],
+          ["実家", "じっか", "one's parents' home; the home one grew up in"],
+          ["懐かしい", "なつかしい", "nostalgic; dearly missed"],
+          ["三人姉妹", "さんにんしまい", "three sisters"],
+          ["末っ子", "すえっこ", "youngest child"],
+          ["一人っ子", "ひとりっこ", "only child"],
+          ["双子", "ふたご", "twins"]
+        ] },
+        { h: "2. {友人|ゆうじん}／{知人|ちじん}・{知|し}り{合|あ}い", words: [
+          ["友人", "ゆうじん", "friend (formal)"],
+          ["知人", "ちじん", "acquaintance (formal)"],
+          ["知り合い", "しりあい", "acquaintance"],
+          ["仲良し", "なかよし", "close friend(s); being on good terms"],
+          ["仕事仲間", "しごとなかま", "colleague; work companion"],
+          ["奥様", "おくさま", "(someone else's) wife (polite)"],
+          ["ご主人", "ごしゅじん", "(someone else's) husband (polite)"],
+          ["お母様", "おかあさま", "(someone else's) mother (polite)"],
+          ["お父様", "おとうさま", "(someone else's) father (polite)"],
+          ["お嬢ちゃん", "おじょうちゃん", "(someone else's) little daughter; young girl"],
+          ["(お)坊ちゃん", "(お)ぼっちゃん", "(someone else's) little son; young boy"],
+          ["氏", "し", "Mr./Ms. (formal, after a surname)"],
+          ["夫妻", "ふさい", "husband and wife; Mr. and Mrs."],
+          ["夫人", "ふじん", "Mrs.; wife of (formal)"],
+          ["職場", "しょくば", "workplace"],
+          ["上司", "じょうし", "boss; superior"],
+          ["部下", "ぶか", "subordinate"],
+          ["先輩", "せんぱい", "senior (who started earlier)"],
+          ["後輩", "こうはい", "junior (who started later)"],
+          ["目上", "めうえ", "one's superior or elder (in status)"],
+          ["目下", "めした", "one's inferior or junior (in status)"],
+          ["年上", "としうえ", "older"],
+          ["年下", "としした", "younger"],
+          ["同い年", "おないどし", "the same age"]
+        ] },
+        { h: "3. {付|つ}き{合|あ}い", words: [
+          ["周囲", "しゅうい", "surroundings; the people around one"],
+          ["親しい", "したしい", "close; intimate (as friends)"],
+          ["付き合い", "つきあい", "relationship; social contact"],
+          ["コミュニケーションを取る", "コミュニケーションをとる", "to communicate"],
+          ["約束を守る", "やくそくをまもる", "to keep a promise"],
+          ["約束を破る", "やくそくをやぶる", "to break a promise"],
+          ["取り消す", "とりけす", "to cancel; to take back"],
+          ["言葉遣い", "ことばづかい", "wording; way of speaking"],
+          ["握手(する)", "あくしゅ(する)", "(to) shake hands"],
+          ["お辞儀(をする)", "おじぎ(をする)", "(to) bow"]
+        ] },
+        { h: "■3 {語形成|ごけいせい}", words: [
+          ["～仲間", "～なかま", "fellow ～; ～ companion"],
+          ["勉強仲間", "べんきょうなかま", "study companion"],
+          ["飲み仲間", "のみなかま", "drinking buddy"],
+          ["～合い", "～あい", "mutual ～; doing ～ together"],
+          ["話し合い", "はなしあい", "discussion; talk"],
+          ["取り～", "とり～", "(verb prefix) take ～"],
+          ["取り出す", "とりだす", "to take out"],
+          ["取り替える", "とりかえる", "to exchange; to replace"],
+          ["～遣い", "～づかい", "way of using ～"],
+          ["金遣い", "かねづかい", "way of spending money"],
+          ["気遣い", "きづかい", "consideration; concern for others"]
+        ] },
+        { h: "■4 {例文|れいぶん}", words: [
+          ["長年", "ながねん", "for many years"],
+          ["たとえ～ても／でも", "たとえ～ても／でも", "even if ～"],
+          ["親友", "しんゆう", "best friend"],
+          ["～振りに", "～ぶりに", "for the first time in (a period)"],
+          ["いとこ", "いとこ", "cousin"],
+          ["ちっとも～ない", "ちっとも～ない", "not at all"],
+          ["まるで～のように", "まるで～のように", "just like ～; as if ～"],
+          ["兄弟", "きょうだい", "siblings; brothers"],
+          ["似る", "にる", "to resemble"]
+        ] }
+      ]
+    },
+    {
       type: "text",
       title: "Ⅰ．{言葉|ことば}と{例文|れいぶん}　■1 ウォーミングアップ",
       t: "(1)　あなたの{周|まわ}りにはどんな{人|ひと}がいますか。\n{私|わたし} → 【{家族|かぞく}／{親類|しんるい}】{父|ちち}　{母|はは}　　【{学校|がっこう}／{会社|かいしゃ}】　　【{友人|ゆうじん}／{知人|ちじん}】{友達|ともだち}",

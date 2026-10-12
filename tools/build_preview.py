@@ -1,7 +1,8 @@
 """Bundle the site into one self-contained HTML file (for sharing a preview).
-Usage: python3 tools/build_preview.py OUT.html
+Usage: python3 tools/build_preview.py OUT.html [AUDIO_MAP.json]
+AUDIO_MAP.json optionally maps site audio paths (audio/kanji/cd01.mp3) to hosted URLs.
 The output has no <html>/<head>/<body> wrapper, because the preview host adds its own."""
-import re, sys, pathlib
+import json, re, sys, pathlib
 
 root = pathlib.Path(__file__).resolve().parent.parent
 index = (root / "index.html").read_text(encoding="utf-8")
@@ -17,7 +18,11 @@ parts = [
     header,
     '<main id="main"></main>',
 ]
+audio_map = json.loads(pathlib.Path(sys.argv[2]).read_text()) if len(sys.argv) > 2 else {}
 for s in scripts:
-    parts.append("<script>\n%s\n</script>" % (root / s).read_text(encoding="utf-8"))
+    js = (root / s).read_text(encoding="utf-8")
+    for path, url in audio_map.items():
+        js = js.replace('"%s"' % path, json.dumps(url))
+    parts.append("<script>\n%s\n</script>" % js)
 pathlib.Path(sys.argv[1]).write_text("\n".join(parts), encoding="utf-8")
 print("wrote", sys.argv[1])

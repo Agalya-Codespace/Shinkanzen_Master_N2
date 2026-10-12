@@ -24,6 +24,55 @@ window.N2_DAYS[1] = window.N2_DAYS[1] || { sections: [] };
       {
         type: "grammar",
         no: "1",
+        id: "d1b-g1",
+        teach: {
+          "intro": [
+            "Vaanga, mudhalla idhu purinjukkalaam. 際(さい) = とき (when). Aanaa idhu **formal** とき. Airport announcement, hotel notice, office email, train announcement — angadhaan idhu kekkum.",
+            "Nenachukkonga: とき = veettula pesra Tamil, 際 = news-reader Tamil. Meaning same, situation vera."
+          ],
+          "pattern": "［名詞］の＋{際|さい}(に)　／　［動詞］{辞書形|じしょけい}・た{形|けい}＋{際|さい}(に)",
+          "examples": [
+            {
+              "jp": "お{降|お}りの{際|さい}は、{足元|あしもと}にご{注意|ちゅうい}ください。",
+              "kana": "おおりのさいは、あしもとにごちゅういください。",
+              "th": "Train-la irangum podhu, kaal adiyila kavanamaa irunga. (Noun お降り + の + 際)"
+            },
+            {
+              "jp": "{外出|がいしゅつ}の{際|さい}は、{部屋|へや}の{鍵|かぎ}をフロントにお{預|あず}けください。",
+              "kana": "がいしゅつのさいは、へやのかぎをフロントにおあずけください。",
+              "th": "Veliya pogum podhu, room key-a front desk-la kuduthuttu ponga. (Hotel notice)"
+            },
+            {
+              "jp": "{緊急|きんきゅう}の{際|さい}は、こちらの{番号|ばんごう}にお{電話|でんわ}ください。",
+              "kana": "きんきゅうのさいは、こちらのばんごうにおでんわください。",
+              "th": "Emergency samayathula, indha number-ku call pannunga."
+            },
+            {
+              "jp": "{日本|にほん}に{入国|にゅうこく}した{際|さい}に、{在留|ざいりゅう}カードを{受|う}け{取|と}りました。",
+              "kana": "にほんににゅうこくしたさいに、ざいりゅうカードをうけとりました。",
+              "th": "Japan-ku vandhu irangina podhu, residence card vaanginen. (た形 + 際に = already nadandha andha time-la)"
+            }
+          ],
+          "wrong": [
+            {
+              "ng": "{毎晩|まいばん}、{寝|ね}る{際|さい}に{歯|は}を{磨|みが}きます。",
+              "ok": "{毎晩|まいばん}、{寝|ね}るときに{歯|は}を{磨|みが}きます。",
+              "th": "Daily routine, chinna veetu vishayam-ku 際 romba stiff-aa irukkum. Inga simple とき podhum."
+            }
+          ],
+          "check": [
+            {
+              "q": "（　　）{際|さい}は、{受付|うけつけ}で{名前|なまえ}をお{書|か}きください。",
+              "opts": [
+                "ご{来社|らいしゃ}の",
+                "{天気|てんき}がいい",
+                "{眠|ねむ}い"
+              ],
+              "ans": 0,
+              "explain": "ご来社(らいしゃ)の際は = when you visit our company. Event + formal notice → 際. 天気がいい, 眠い are just states, not an occasion."
+            }
+          ]
+        },
         title: "～{際|さい}(に)",
         meaning: "～とき",
         tag: "硬い言い方",
@@ -43,6 +92,56 @@ window.N2_DAYS[1] = window.N2_DAYS[1] || { sections: [] };
       {
         type: "grammar",
         no: "2",
+        id: "d1b-g2",
+        teach: {
+          "intro": [
+            "に{際|さい}して／にあたって = 'X nadakkapogum andha special samayathula / X-ai munnittu'. Oru thadava mattum varra, plan panni seiyra **special occasion** (kalyaanam, pudhu business, study abroad, opening).",
+            "Pinnaadi enna varum? Oru **action**: prepare pannrom, greet pannrom, speech kudukkrom, help kekkrom.",
+            "Vithyaasam: 際 = any formal 'when' (oru notice-la, ovvoru thadavaiyum). に際して = special one-time occasion. にあたって = innum positive, mun-nokki pogra feel (start, open, challenge). Negative vishayam (倒産, 入院, 別れ) kooda にあたって podaadheenga."
+          ],
+          "pattern": "［名詞］・［動詞］{辞書形|じしょけい}＋に{際|さい}して／にあたって（にあたり・にあたりまして）",
+          "examples": [
+            {
+              "jp": "{留学|りゅうがく}に{際|さい}して、{両親|りょうしん}から{手紙|てがみ}をもらった。",
+              "kana": "りゅうがくにさいして、りょうしんからてがみをもらった。",
+              "th": "Study abroad pogum andha samayathula, Amma-Appa kitta irundhu oru letter kidaichadhu."
+            },
+            {
+              "jp": "{引|ひ}っ{越|こ}しに{際|さい}して、{近所|きんじょ}の{人|ひと}にあいさつをした。",
+              "kana": "ひっこしにさいして、きんじょのひとにあいさつをした。",
+              "th": "Veedu maarum podhu, pakkathu veetu kaarangalukku greet panninen."
+            },
+            {
+              "jp": "{入学|にゅうがく}にあたって、{新|あたら}しいパソコンを{買|か}った。",
+              "kana": "にゅうがくにあたって、あたらしいパソコンをかった。",
+              "th": "College-la join pannradhukku munnadi, pudhu laptop vaanginen. (Positive new start → にあたって)"
+            },
+            {
+              "jp": "{店|みせ}を{開|ひら}くにあたり、{地元|じもと}の{人|ひと}たちに{協力|きょうりょく}をお{願|ねが}いした。",
+              "kana": "みせをひらくにあたり、じもとのひとたちにきょうりょくをおねがいした。",
+              "th": "Kadai thirakkum podhu, local people kitta help kettom. (にあたり = written style)"
+            }
+          ],
+          "wrong": [
+            {
+              "ng": "{会社|かいしゃ}の{倒産|とうさん}にあたって、{社員|しゃいん}に{説明|せつめい}をした。",
+              "ok": "{会社|かいしゃ}の{倒産|とうさん}に{際|さい}して、{社員|しゃいん}に{説明|せつめい}をした。",
+              "th": "倒産(とうさん, bankruptcy) negative event. にあたって positive/active start-ku mattum. Negative-ku に際して use pannunga."
+            }
+          ],
+          "check": [
+            {
+              "q": "{新|あたら}しい{事業|じぎょう}を{始|はじ}める（　　）、{社長|しゃちょう}があいさつをした。",
+              "opts": [
+                "にあたって",
+                "とたん",
+                "かと{思|おも}うと"
+              ],
+              "ans": 0,
+              "explain": "New business start = special, positive, planned occasion, and after it comes an action (あいさつをした). So にあたって."
+            }
+          ]
+        },
         title: "～に{際|さい}して・～にあたって",
         meaning: "～するとき",
         tag: "硬い言い方",
@@ -65,6 +164,61 @@ window.N2_DAYS[1] = window.N2_DAYS[1] || { sections: [] };
       {
         type: "grammar",
         no: "3",
+        id: "d1b-g3",
+        teach: {
+          "intro": [
+            "Ippo 'immediately after' group start aagudhu. ～たとたん(に) = 'X pannina **andha nodiyile**, edhirpaakaadha (意外な) Y nadandhuchu!'",
+            "Feel: 'Door thirandhadhum… dhabaar-nu poonai kudhichuchu!' Surprise irukkanum. Adhuvum Y already nadandha vishayam, past-la mudiyum.",
+            "Rule: Y-la unga wish (～たい), plan (～よう), request (～てください) varakoodaadhu. Ungalaala control panna mudiyaadha event dhaan."
+          ],
+          "pattern": "［動詞］た{形|けい}＋とたん(に)",
+          "examples": [
+            {
+              "jp": "ドアを{開|あ}けたとたん、{猫|ねこ}が{飛|と}び{出|だ}してきた。",
+              "kana": "ドアをあけたとたん、ねこがとびだしてきた。",
+              "th": "Door thirandha andha nodiyila, poonai veliya paanjuduchu!"
+            },
+            {
+              "jp": "{家|いえ}を{出|で}たとたんに、{雨|あめ}が{降|ふ}り{出|だ}した。",
+              "kana": "いえをでたとたんに、あめがふりだした。",
+              "th": "Veettai vittu veliya kaal vechadhum, mazhai aarambichuduchu. (Unlucky surprise!)"
+            },
+            {
+              "jp": "{立|た}ち{上|あ}がったとたん、{頭|あたま}がくらっとした。",
+              "kana": "たちあがったとたん、あたまがくらっとした。",
+              "th": "Ezhundha udane thalai suthuchu."
+            },
+            {
+              "jp": "{有名|ゆうめい}になったとたん、{彼|かれ}は{昔|むかし}の{友達|ともだち}に{会|あ}わなくなった。",
+              "kana": "ゆうめいになったとたん、かれはむかしのともだちにあわなくなった。",
+              "th": "Famous aanadhum, avan pazhaya friends-a paakkaradhe niruthittaan. (Sudden change → とたん)"
+            }
+          ],
+          "wrong": [
+            {
+              "ng": "{家|いえ}に{帰|かえ}ったとたん、{宿題|しゅくだい}をしよう。",
+              "ok": "{家|いえ}に{帰|かえ}ったら、すぐ{宿題|しゅくだい}をしよう。",
+              "th": "'～しよう' is your plan. たとたん-ku apram plan/wish vara koodaadhu. Plan-ku たら、すぐ use pannunga."
+            }
+          ],
+          "check": [
+            {
+              "q": "{電車|でんしゃ}に{乗|の}ったとたん、（　　）。",
+              "opts": [
+                "ドアが{閉|し}まって{財布|さいふ}を{忘|わす}れたことに{気|き}がついた",
+                "{本|ほん}を{読|よ}もう",
+                "{座|すわ}ってください"
+              ],
+              "keys": [
+                "a",
+                "b",
+                "c"
+              ],
+              "ans": 0,
+              "explain": "After たとたん comes an unexpected thing that happened: realised I'd forgotten my wallet. 読もう (my plan) and 座ってください (request) can't follow たとたん."
+            }
+          ]
+        },
         title: "～たとたん(に)",
         meaning: "～したら、{直後|ちょくご}に{意外|いがい}なことが{起|お}こる。",
         explain: [
@@ -85,6 +239,59 @@ window.N2_DAYS[1] = window.N2_DAYS[1] || { sections: [] };
       {
         type: "grammar",
         no: "4",
+        id: "d1b-g4",
+        teach: {
+          "intro": [
+            "～(か)と{思|おも}うと／～(か)と{思|おも}ったら = 'Ippo dhaan X aachu nu nenachen… adhukkulla Y!' Rendu event fast-aa, oru big change.",
+            "Golden rule: idhu **naan paakkura scene**. Vera aal (thambi, baby, boss) or nature (vaanam, weather) pannradhu. **En sondha action-ku use panna maattom** (わたしは～かと思うと ✕).",
+            "Y-la wish/plan/request varaadhu (たとたん maadhiriye)."
+          ],
+          "pattern": "［動詞］た{形|けい}＋(か)と{思|おも}うと／(か)と{思|おも}ったら",
+          "examples": [
+            {
+              "jp": "{弟|おとうと}は{帰|かえ}ってきたかと{思|おも}うと、すぐ{遊|あそ}びに{出|で}かけた。",
+              "kana": "おとうとはかえってきたかとおもうと、すぐあそびにでかけた。",
+              "th": "Thambi veetukku vandhaan nu nenachen, udane thirumba vilayada kilambittaan."
+            },
+            {
+              "jp": "{空|そら}が{暗|くら}くなったかと{思|おも}ったら、{急|きゅう}に{雨|あめ}が{降|ふ}ってきた。",
+              "kana": "そらがくらくなったかとおもったら、きゅうにあめがふってきた。",
+              "th": "Vaanam iruttaachu nu paathen, udane mazhai kotta aarambichuduchu."
+            },
+            {
+              "jp": "{赤|あか}ちゃんは{寝|ね}たかと{思|おも}うと、すぐに{目|め}を{覚|さ}ました。",
+              "kana": "あかちゃんはねたかとおもうと、すぐにめをさました。",
+              "th": "Baby thoongiduchu nu nenachen, udane muzhichikkuchu!"
+            },
+            {
+              "jp": "{部長|ぶちょう}は{会議室|かいぎしつ}に{入|はい}ったかと{思|おも}ったら、すぐに{出|で}てきた。",
+              "kana": "ぶちょうはかいぎしつにはいったかとおもったら、すぐにでてきた。",
+              "th": "Manager meeting room-kulla ponaar nu paathen, udane veliya vandhuttaar."
+            }
+          ],
+          "wrong": [
+            {
+              "ng": "{私|わたし}は{家|いえ}に{帰|かえ}ったかと{思|おも}うと、すぐ{寝|ね}た。",
+              "ok": "{私|わたし}は{家|いえ}に{帰|かえ}ると、すぐ{寝|ね}た。",
+              "th": "Idhu en sondha action. かと思うと vera aaloda action-a paakkum podhu mattum. En action-ku と／たらすぐ use pannunga."
+            }
+          ],
+          "check": [
+            {
+              "q": "どちらが{正|ただ}しいですか。",
+              "opts": [
+                "{子供|こども}たちは{笑|わら}ったかと{思|おも}うと、もうけんかを{始|はじ}めた。",
+                "{私|わたし}は{笑|わら}ったかと{思|おも}うと、もうけんかを{始|はじ}めた。"
+              ],
+              "keys": [
+                "a",
+                "b"
+              ],
+              "ans": 0,
+              "explain": "a: the children (someone else) laughed, then started fighting already — correct. b: 私 = speaker's own action, so かと思うと can't be used."
+            }
+          ]
+        },
         title: "～(か)と{思|おも}うと・～(か)と{思|おも}ったら",
         meaning: "～の{後|あと}、すぐに{続|つづ}いて{次|つぎ}の{出来事|できごと}や{大|おお}きな{変化|へんか}が{起|お}こる。",
         explain: [
@@ -105,6 +312,61 @@ window.N2_DAYS[1] = window.N2_DAYS[1] || { sections: [] };
       {
         type: "grammar",
         no: "5",
+        id: "d1b-g5",
+        teach: {
+          "intro": [
+            "～か～ないかのうちに = 'X **mudiyaradhukkulla / aagudhaa illayaa nu theriyaradhukkulla**, Y nadandhuchu.' Almost same time!",
+            "Shape-a kavaninga: same verb rendu thadava: 鳴る**か**鳴ら**ない**かのうちに. Mudhalla dictionary/た form, apram ない form.",
+            "かと思うと vs idhu: か～ないかのうちに-la 'almost simultaneous' feel innum strong. Inga speaker action kooda OK. Aanaa Y-la plan/request varaadhu."
+          ],
+          "pattern": "［動詞］{辞書形|じしょけい}／た{形|けい}＋か＋［{同|おな}じ{動詞|どうし}］ない{形|けい}＋かのうちに",
+          "examples": [
+            {
+              "jp": "{授業|じゅぎょう}の{終|お}わりのベルが{鳴|な}るか{鳴|な}らないかのうちに、{学生|がくせい}たちは{教室|きょうしつ}を{出|で}ていった。",
+              "kana": "じゅぎょうのおわりのベルがなるかならないかのうちに、がくせいたちはきょうしつをでていった。",
+              "th": "Class mudiyura bell adikkaradhukkulla, students ellarum classroom-a vittu odittaanga."
+            },
+            {
+              "jp": "{彼|かれ}は{布団|ふとん}に{入|はい}るか{入|はい}らないかのうちに、{寝|ね}てしまった。",
+              "kana": "かれはふとんにはいるかはいらないかのうちに、ねてしまった。",
+              "th": "Avan bed-la padukkaradhukkulla thoongittaan."
+            },
+            {
+              "jp": "{電話|でんわ}を{切|き}るか{切|き}らないかのうちに、また{電話|でんわ}が{鳴|な}った。",
+              "kana": "でんわをきるかきらないかのうちに、またでんわがなった。",
+              "th": "Phone cut pannaradhukkulla, thirumba phone adichuduchu."
+            },
+            {
+              "jp": "{電車|でんしゃ}のドアが{開|あ}くか{開|あ}かないかのうちに、{乗客|じょうきゃく}が{乗|の}り{込|こ}んできた。",
+              "kana": "でんしゃのドアがあくかあかないかのうちに、じょうきゃくがのりこんできた。",
+              "th": "Train door muzhusaa thirakkaradhukkulla, passengers ulla nuzhanjuttaanga."
+            }
+          ],
+          "wrong": [
+            {
+              "ng": "ベルが{鳴|な}るか{鳴|な}らないかのうちに、{教室|きょうしつ}を{出|で}よう。",
+              "ok": "ベルが{鳴|な}ったら、すぐ{教室|きょうしつ}を{出|で}よう。",
+              "th": "'出よう' is a plan. か～ないかのうちに-ku apram plan/request varaadhu. Already nadandha scene-a describe pannum podhu mattum."
+            }
+          ],
+          "check": [
+            {
+              "q": "{試合|しあい}が（　　）うちに、{雨|あめ}が{降|ふ}り{出|だ}した。",
+              "opts": [
+                "{始|はじ}まるか{始|はじ}まらないかの",
+                "{始|はじ}まるかと{思|おも}う",
+                "{始|はじ}まったとたんの"
+              ],
+              "keys": [
+                "a",
+                "b",
+                "c"
+              ],
+              "ans": 0,
+              "explain": "Pattern: 始まるか始まらないかのうちに — same verb, dictionary form + か + ない form + かのうちに. 'The match had barely started when it began to rain.'"
+            }
+          ]
+        },
         title: "～か～ないかのうちに",
         meaning: "～が{終|お}わると{同時|どうじ}に、{次|つぎ}のことが{起|お}こる。",
         explain: [

@@ -11,6 +11,7 @@
   --goi: #2f7a4f;
   --bunpo: #2a5c9a;
   --dokkai: #9a6a12;
+  --chokai: #6b4aa0;
   --ok: #1f7a46;
   --ok-bg: #e2f3e8;
   --bad: #b4322a;
@@ -28,7 +29,7 @@
   :root:not([data-theme="light"]) {
     --paper: #12161e; --sheet: #1a202b; --ink: #e6eaf1; --ink-soft: #a7b1c2; --line: #2e3646;
     --ai: #8fb0e6; --ai-soft: #1f2b40;
-    --kanji: #ec8a7c; --goi: #78c79a; --bunpo: #8db6ec; --dokkai: #e2b964;
+    --kanji: #ec8a7c; --goi: #78c79a; --bunpo: #8db6ec; --dokkai: #e2b964; --chokai: #b9a0e6;
     --ok: #7fd3a1; --ok-bg: #173226; --bad: #f19a92; --bad-bg: #3a1c1a;
     --explain-bg: #2a2516; --explain-line: #8a7433;
     color-scheme: dark;
@@ -37,7 +38,7 @@
 :root[data-theme="dark"] {
   --paper: #12161e; --sheet: #1a202b; --ink: #e6eaf1; --ink-soft: #a7b1c2; --line: #2e3646;
   --ai: #8fb0e6; --ai-soft: #1f2b40;
-  --kanji: #ec8a7c; --goi: #78c79a; --bunpo: #8db6ec; --dokkai: #e2b964;
+  --kanji: #ec8a7c; --goi: #78c79a; --bunpo: #8db6ec; --dokkai: #e2b964; --chokai: #b9a0e6;
   --ok: #7fd3a1; --ok-bg: #173226; --bad: #f19a92; --bad-bg: #3a1c1a;
   --explain-bg: #2a2516; --explain-line: #8a7433;
   color-scheme: dark;
@@ -163,9 +164,67 @@ select { font: inherit; padding: 3px 6px; border: 1px solid var(--line); border-
 .c-goi { --c: var(--goi); }
 .c-bunpo { --c: var(--bunpo); }
 .c-dokkai { --c: var(--dokkai); }
+.c-chokai { --c: var(--chokai); }
 
 @media (prefers-reduced-motion: no-preference) {
   .explain { animation: drop 160ms ease-out; }
   @keyframes drop { from { opacity: 0.4; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
 }
 .opt .k:empty { display: none; }
+
+/* Bigger, friendlier answer buttons */
+.opt { min-height: 40px; padding: 8px 14px; transition: border-color 120ms, background 120ms, transform 80ms; }
+.opt:active { transform: scale(0.98); }
+.opt[aria-pressed="true"] { border-width: 2px; }
+.opt.right::after { content: " ○"; color: var(--ok); font-weight: 700; }
+.opt.wrong::after { content: " ×"; color: var(--bad); font-weight: 700; }
+.opts.stack { display: grid; grid-template-columns: 1fr; }
+.opts.stack .opt { width: 100%; }
+.q { border-top: 1px dashed var(--line); padding-top: 12px; }
+.items > .q:first-child, .teach .q { border-top: 0; padding-top: 0; }
+.score { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.score .bar { flex: 1 1 120px; }
+.score .bar > i { background: var(--c, var(--ai)); }
+
+/* Matching rows (連語) */
+.match { display: grid; gap: 10px; }
+.match-row { display: grid; gap: 6px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+.match-row .left { font-weight: 600; }
+.match-row .dash { color: var(--ink-soft); margin-left: 6px; font-weight: 400; }
+.match-row .opts { gap: 6px; }
+.chip { border-radius: 99px; min-height: 36px; padding: 4px 14px; }
+
+/* Word list */
+.wl-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.wl-h { font-family: var(--font-display); font-weight: 700; margin-top: 4px; }
+table.wl td:first-child { font-size: 1.12rem; font-weight: 600; white-space: nowrap; }
+table.wl td[data-col="kana"] { white-space: nowrap; }
+table.wl tbody tr:nth-child(even) td { background: var(--paper); }
+table.wl.hide-kanji td[data-col="kanji"]:not(.peek),
+table.wl.hide-kana td[data-col="kana"]:not(.peek),
+table.wl.hide-en td[data-col="en"]:not(.peek) { color: transparent; cursor: pointer; background-image: repeating-linear-gradient(135deg, var(--line) 0 2px, transparent 2px 7px); }
+table.wl.hide-kanji td[data-col="kanji"]:not(.peek) rt { color: transparent; }
+
+/* Grammar: sensei's lesson first */
+.teach { background: var(--ai-soft); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; }
+.teach p { margin: 0; }
+.teach-head { font-family: var(--font-ui); font-weight: 600; font-size: 0.85rem; color: var(--c, var(--ai)); }
+.teach-sub { font-family: var(--font-ui); font-weight: 600; font-size: 0.85rem; margin-top: 4px; }
+.teach-sub.book { color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 8px; }
+.pattern { font-family: var(--font-jp); font-weight: 700; background: var(--sheet); border: 1px dashed var(--c, var(--ai)); border-radius: 6px; padding: 6px 10px; }
+.teach-ex { margin: 0; padding-left: 1.4em; display: grid; gap: 8px; }
+.teach-ex .jp { font-size: 1.02rem; }
+.teach-ex .kana, .ng .kana { font-size: 0.85rem; color: var(--ink-soft); }
+.teach-ex .th, .ng .th { font-size: 0.92rem; font-style: italic; }
+.ng { background: var(--sheet); border-radius: 6px; padding: 8px 10px; display: grid; gap: 2px; }
+.mark { font-weight: 700; margin-right: 6px; font-family: var(--font-ui); }
+.mark.bad { color: var(--bad); }
+.mark.ok { color: var(--ok); }
+
+/* Audio */
+.player { display: grid; gap: 6px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.player audio { width: 100%; }
+.player .p-label { font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600; }
+.player .speeds { display: flex; gap: 6px; flex-wrap: wrap; }
+.small-btn.on { background: var(--ai); color: var(--sheet); border-color: var(--ai); }
+.player.missing { font-family: var(--font-ui); font-size: 0.85rem; }

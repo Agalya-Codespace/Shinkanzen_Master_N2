@@ -7,11 +7,114 @@ window.N2_DAYS[1].sections.push({
   source: "新完全マスター漢字 N2 · pp.2–6 · 300まで",
   blocks: [
     {
+      type: "wordlist",
+      title: "📋 {今日|きょう}の{漢字|かんじ}リスト · Today's kanji words",
+      lead: "Every kanji word printed in today's pages: the 送り仮名 rule examples, the クイズ and 第4回 Ⅱ. (The 第1–4回 CD sentences are audio only.) Hide a column to test yourself; tap a striped cell to peek.",
+      explain: [
+        "Indha list-la inniki pages-la vara ella kanji words-um irukku. Kanji book-la important: correct reading (ひらがな) and correct okurigana.",
+        "Practice: 'ひらがな' column hide pannunga, kanji paathu reading solla try pannunga. Apram '漢字' hide pannunga, hiragana paathu kanji-a notebook-la ezhudhi paarunga. Okurigana enga start aagudhu nu kavanikkanum!"
+      ],
+      groups: [
+        { h: "◆{動詞|どうし}の{例|れい}", words: [
+          ["書く", "かく", "to write"],
+          ["話す", "はなす", "to speak"],
+          ["帰る", "かえる", "to return home"],
+          ["考える", "かんがえる", "to think"],
+          ["起きる", "おきる", "to get up; to happen"],
+          ["変える", "かえる", "to change (something)"],
+          ["着る", "きる", "to wear"],
+          ["見る", "みる", "to see"],
+          ["出る", "でる", "to go out"],
+          ["寝る", "ねる", "to sleep"],
+          ["止まる", "とまる", "to stop (intransitive)"],
+          ["止める", "とめる", "to stop (something)"],
+          ["伝わる", "つたわる", "to be conveyed"],
+          ["伝える", "つたえる", "to convey; to tell"],
+          ["助かる", "たすかる", "to be saved; to be helped"],
+          ["助ける", "たすける", "to save; to help"],
+          ["冷える", "ひえる", "to get cold"],
+          ["冷やす", "ひやす", "to cool (something)"]
+        ] },
+        { h: "◆{形容詞|けいようし}・{派生語|はせいご}の{例|れい}", words: [
+          ["美しい", "うつくしい", "beautiful"],
+          ["新しい", "あたらしい", "new"],
+          ["高い", "たかい", "high; expensive"],
+          ["重い", "おもい", "heavy"],
+          ["近い", "ちかい", "near"],
+          ["大きい", "おおきい", "big"],
+          ["小さい", "ちいさい", "small"],
+          ["少ない", "すくない", "few"],
+          ["冷たい", "つめたい", "cold (to the touch)"],
+          ["静かな", "しずかな", "quiet"],
+          ["確かな", "たしかな", "certain; reliable"],
+          ["柔らかな", "やわらかな", "soft"],
+          ["悲しい", "かなしい", "sad"],
+          ["悲しむ", "かなしむ", "to grieve"],
+          ["楽しい", "たのしい", "fun"],
+          ["楽しみ", "たのしみ", "something to look forward to"],
+          ["強い", "つよい", "strong"],
+          ["強まる", "つよまる", "to become stronger"],
+          ["頼む", "たのむ", "to ask; to request"],
+          ["頼もしい", "たのもしい", "reliable; dependable"],
+          ["憎む", "にくむ", "to hate"],
+          ["憎らしい", "にくらしい", "hateful; detestable"]
+        ] },
+        { h: "【クイズ】", words: [
+          ["働く", "はたらく", "to work"],
+          ["食べる", "たべる", "to eat"],
+          ["来る", "くる", "to come"],
+          ["集まる", "あつまる", "to gather (intransitive)"],
+          ["集める", "あつめる", "to collect (something)"],
+          ["寒い", "さむい", "cold (weather)"],
+          ["難しい", "むずかしい", "difficult"],
+          ["暖かな", "あたたかな", "warm"],
+          ["広い", "ひろい", "wide; spacious"],
+          ["広がる", "ひろがる", "to spread; to widen"],
+          ["喜ぶ", "よろこぶ", "to be glad"],
+          ["喜び", "よろこび", "joy"]
+        ] },
+        { h: "{第|だい}４{回|かい}　Ⅱ", words: [
+          ["湖", "みずうみ", "lake"],
+          ["丸い", "まるい", "round"],
+          ["映る", "うつる", "to be reflected"],
+          ["大学", "だいがく", "university"],
+          ["屋上", "おくじょう", "rooftop"],
+          ["大小", "だいしょう", "large and small"],
+          ["二つ", "ふたつ", "two (things)"],
+          ["下さる", "くださる", "to give (to me; honorific)"],
+          ["心温まる", "こころあたたまる", "heartwarming"],
+          ["外科医", "げかい", "surgeon"],
+          ["医学", "いがく", "medicine (the science)"],
+          ["学ぶ", "まなぶ", "to learn; to study"],
+          ["結婚", "けっこん", "marriage"],
+          ["見事に", "みごとに", "completely; splendidly"],
+          ["外れる", "はずれる", "to miss; to be wrong (a guess)"],
+          ["世間", "せけん", "the world; people in general"],
+          ["悪口", "わるくち", "bad-mouthing; speaking ill of others"],
+          ["会う", "あう", "to meet (a person)"],
+          ["急ぐ", "いそぐ", "to hurry"],
+          ["駅", "えき", "station"],
+          ["向かう", "むかう", "to head for"]
+        ] }
+      ]
+    },
+    {
       type: "text",
       t: "この{本|ほん}には、ＣＤを{聞|き}いて{文|ぶん}を{書|か}く{問題|もんだい}があります。{各回|かくかい}を{始|はじ}める{前|まえ}に、{送|おく}り{仮名|がな}のルールを{覚|おぼ}えましょう。\n{問題|もんだい}の{解|と}き{方|かた}はⅷページを{見|み}てください。",
       explain: [
         "Vanakkam! Inniki namma Kanji book-oda first page. Sensei solradhu: indha book-la CD kettu sentence ezhudhura (書く) questions irukku. Adhukku munnadi 送り仮名(おくりがな) rules-a nyabagam vechukkonga.",
         "送り仮名(おくりがな) na enna? Kanji-ku appuram varra hiragana part. Example: 書く(かく) — 書 kanji, く okurigana. 考える(かんがえる) — 考 kanji, える okurigana. N2 exam-la 'correct okurigana edhu?' nu kekkalaam, so idhu romba mukkiyam."
+      ]
+    },
+    {
+      type: "audio",
+      title: "ＣＤを{聞|き}いて{書|か}く{問題|もんだい}の{書|か}き{方|かた}　CD1（p.ⅷ）",
+      src: "audio/kanji/cd01.mp3",
+      label: "CD 1 · {例|れい}",
+      t: "Ⅰ{番|ばん}の{問題|もんだい}は、ＣＤを{聞|き}いて{文|ぶん}を{書|か}く{練習|れんしゅう}です。{文|ぶん}は２{回|かい}{読|よ}みます。できるだけ{最初|さいしょ}から{漢字|かんじ}を{使|つか}って{書|か}きましょう。\n・（　）の{中|なか}の{数|かず}は、{漢字|かんじ}の{数|かず}です。{例|れい}のように５と{書|か}いてあったら、{五|いつ}つの{漢字|かんじ}を{使|つか}って{文|ぶん}を{書|か}いてください。\n・{同|おな}じ{字|じ}がもう{一度|いちど}{出|で}てきたら、２{回|かい}と{数|かぞ}えます。\n{例|れい}）ＣＤ「いちにちいっかいはてきすとをみてください。」→（５）[[一日一回はテキストを見てください。]]\n**{書|か}き{方|かた}の{注意|ちゅうい}**\n(1)「{漢字|かんじ}」「{平仮名|ひらがな}」「{片仮名|かたかな}」を{使|つか}って{文|ぶん}を{書|か}きます。{数字|すうじ}は{漢字|かんじ}で{書|か}きます。（{一二三|いちにさん}……）\n(2) {次|つぎ}のようなものは、{平仮名|ひらがな}で{書|か}きます。「～て―」～てください、～ていく、～てくる、～てみる、～てあげる　「こと」～ことがある、～ことにする　「いう」～という、～からといって　「ほう」～たほうがいい　など\n(3)「わたし」は「{私|わたし}」と{漢字|かんじ}で{書|か}きます。\n{間違|まちが}いは{消|け}しゴムで{消|け}さないで、{線|せん}で{消|け}して、{正|ただ}しい{字|じ}を{書|か}きましょう。",
+      explain: [
+        "Dictation eppadi pannanum nu book sollitharudhu. CD 1 play pannunga: 'いちにちいっかいはてきすとをみてください' nu varum. Neenga ezhudhanum: 一日一回はテキストを見てください。 Kanji count: 一・日・一・回・見 = 5. 一 rendu thadava vandhaalum 2 nu count pannanum.",
+        "Mukkiyamaana rules: numbers kanji-la (一二三). ～てください, ～ことがある, ～という, ～たほうがいい maadhiri grammar parts hiragana-la. 'わたし' mattum 私 nu kanji-la ezhudhunga."
       ]
     },
     {
@@ -111,18 +214,22 @@ window.N2_DAYS[1].sections.push({
     {
       type: "dictation",
       id: "r1",
+      audio: "audio/kanji/cd02.mp3",
+      audioLabel: "CD 2 · 漢字 N2",
       title: "{第|だい}１{回|かい}　300まで",
       lead: "Ⅰ　ＣＤを{聞|き}いて、{指示|しじ}された{数|かず}の{漢字|かんじ}を{使|つか}って{文|ぶん}を{書|か}きなさい。{数字|すうじ}も{漢字|かんじ}で{書|か}きます。CD2",
       counts: [5, 8, 5, 5, 7, 7, 12],
-      note: "The number in （　） is how many kanji your sentence must use. You need CD track 2. Your PDF has no CD audio and no answer booklet, so this site cannot check these; write them here and they stay saved.",
+      note: "The number in （　） is how many kanji your sentence must use. Play CD track 2 above (pause after each sentence). The answer booklet is not in your PDF, so this site cannot check these; write them here and they stay saved.",
       explain: [
         "Idhu dictation. CD-la oru sentence varum, adha kettu ezhudhanum. (5) na 5 kanji use pannanum. Numbers kooda kanji-la: 三, 十 maadhiri.",
-        "'300まで' na: book-oda first 300 kanji list-la irundhu dhaan varum. Unga PDF-la CD illa, so audio kidaicha appuram pannunga. Audio irundhaa enakku sollunga, answers check panna help pannren."
+        "'300まで' na: book-oda first 300 kanji list-la irundhu dhaan varum. Mela irukkura player-la CD track play pannunga; oru sentence mudinjadhum pause panni ezhudhunga. Slow-aa kekkanum na 0.75× button use pannunga."
       ]
     },
     {
       type: "dictation",
       id: "r2",
+      audio: "audio/kanji/cd03.mp3",
+      audioLabel: "CD 3 · 漢字 N2",
       title: "{第|だい}２{回|かい}　300まで",
       lead: "Ⅰ　ＣＤを{聞|き}いて、{指示|しじ}された{数|かず}の{漢字|かんじ}を{使|つか}って{文|ぶん}を{書|か}きなさい。{数字|すうじ}も{漢字|かんじ}で{書|か}きます。CD3",
       counts: [9, 7, 6, 8, 6, 6, 7],
@@ -131,6 +238,8 @@ window.N2_DAYS[1].sections.push({
     {
       type: "dictation",
       id: "r3",
+      audio: "audio/kanji/cd04.mp3",
+      audioLabel: "CD 4 · 漢字 N2",
       title: "{第|だい}３{回|かい}　300まで",
       lead: "Ⅰ　ＣＤを{聞|き}いて、{指示|しじ}された{数|かず}の{漢字|かんじ}を{使|つか}って{文|ぶん}を{書|か}きなさい。{数字|すうじ}も{漢字|かんじ}で{書|か}きます。CD4",
       counts: [8, 6, 9, 7, 6, 10, 8, 8],
@@ -139,6 +248,8 @@ window.N2_DAYS[1].sections.push({
     {
       type: "dictation",
       id: "r4",
+      audio: "audio/kanji/cd05.mp3",
+      audioLabel: "CD 5 · 漢字 N2",
       title: "{第|だい}４{回|かい}　300まで",
       lead: "Ⅰ　ＣＤを{聞|き}いて、{指示|しじ}された{数|かず}の{漢字|かんじ}を{使|つか}って{文|ぶん}を{書|か}きなさい。{数字|すうじ}も{漢字|かんじ}で{書|か}きます。CD5",
       counts: [15, 14, 6, 4, 10, 6, 6, 8],
