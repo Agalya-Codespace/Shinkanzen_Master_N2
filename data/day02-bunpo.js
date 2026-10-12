@@ -298,7 +298,7 @@ window.N2_DAYS[2].sections.push({
      "explain": "交通機関(こうつうきかん) = transport system. 複雑(ふくざつ) = complicated. ばかりで = te-form connection."
     },
     {
-     "t": "③{一|いち}{度|ど}{問題|もんだい}が{起|お}きてから、{彼|かれ}との{人間|にんげん}{関係|かんけい}は{悪|わる}くなる[[{一方|いっぽう}だ]]。",
+     "t": "③{一度|いちど}{問題|もんだい}が{起|お}きてから、{彼|かれ}との{人間|にんげん}{関係|かんけい}は{悪|わる}くなる[[{一方|いっぽう}だ]]。",
      "explain": "人間関係(にんげんかんけい) = relationship. Oru problem vandhadhula irundhu relationship mosamaagittae irukku."
     },
     {

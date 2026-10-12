@@ -123,10 +123,10 @@ def _with_markers(seg, skip_underlined):
 def furi(text, skip_underlined=False):
     """skip_underlined: leave [[..]] text without readings (kanji-reading quizzes)."""
     if not re.search(KANJI, text): return text
-    pieces = re.split(r"(\{[^{}|]+\|[^{}]+\}|\n)", text)
+    pieces = re.split(r"(\{[^{}|]+\|[^{}]+\}|\n|[①-⑳]|（[　 ]*）)", text)  # circled numbers and blanks break context
     res = []
     for p in pieces:
-        if (p.startswith("{") and "|" in p) or p == "\n": res.append(p); continue
+        if (p.startswith("{") and "|" in p) or not re.search(KANJI, p): res.append(p); continue
         res.append(_with_markers(p, skip_underlined) if re.search(KANJI, p) else p)
     return "".join(res)
 
