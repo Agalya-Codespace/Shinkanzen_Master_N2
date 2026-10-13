@@ -17,7 +17,7 @@ def ruby_word(surface, reading):
     if not m: return "{%s|%s}" % (surface, reading)
     return "".join("{%s|%s}" % (p, g) if re.match(KANJI, p) else p for p, g in zip(parts, m.groups()))
 
-FIX = {"語": "ご", "静": "しず", "次": "つぎ", "夜": "よる", "日本": "にほん", "日本人": "にほんじん", "日本語": "にほんご"}
+FIX = {"10日": "とおか", "十日": "とおか", "語": "ご", "静": "しず", "次": "つぎ", "夜": "よる", "日本": "にほん", "日本人": "にほんじん", "日本語": "にほんご"}
 
 def furi_plain(text):
     """Annotate with the full sentence as context. Each Open JTalk word is located in the original
