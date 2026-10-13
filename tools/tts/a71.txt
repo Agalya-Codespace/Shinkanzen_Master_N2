@@ -1,0 +1,8 @@
+# 聴解 Ⅴ 練習1-A 1 (p.64) · Claude's own practice set in the book's format (the book prints no script for CD A track 71)
+N: 練習1のA。1。いくつかの単語を聞いて、それらに共通することを考えてください。
+-
+N: 1番。
+F: 切符、ホーム、改札、駅員、時刻表。
+-
+N: 2番。
+M: 体温計、診察、薬、注射、看護師。
