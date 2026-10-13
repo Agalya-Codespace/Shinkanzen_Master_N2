@@ -1,6 +1,6 @@
 # Shinkanzen Master N2 · 20 Days
 
-A static study site that splits the four 新完全マスター N2 books (漢字, 語彙, 文法, 読解) into 20 days. Each day has one slice of every book, side by side.
+A static study site that splits the five 新完全マスター N2 books (漢字, 語彙, 文法, 読解) into 20 days. Each day has one slice of every book, side by side.
 
 - Open `index.html` in a browser. No build step, no server needed.
 - Progress (done marks, quiz answers, furigana on/off) is saved in the browser's localStorage.
