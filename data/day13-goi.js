@@ -212,7 +212,7 @@ window.N2_DAYS[13].sections.push({
        "large amount"
       ],
       [
-       "{山道|やまみち}",
+       "山道",
        "やまみち",
        "mountain path"
       ],
