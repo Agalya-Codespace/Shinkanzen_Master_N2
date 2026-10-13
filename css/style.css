@@ -107,9 +107,9 @@ u { text-decoration-thickness: 1.5px; text-underline-offset: 4px; text-decoratio
 .block .lead { margin: 0; }
 .muted { color: var(--ink-soft); font-size: 0.9rem; }
 .row { display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
-.row > .txt { flex: 1 1 260px; min-width: 0; }
+.row > .txt { flex: 1 1 260px; min-width: 0; overflow-wrap: anywhere; }
 
-.items { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
 .items > li { border-top: 1px dashed var(--line); padding-top: 8px; }
 .items > li:first-child { border-top: 0; padding-top: 0; }
 .sub { margin: 4px 0 0; padding-left: 1.2em; }
