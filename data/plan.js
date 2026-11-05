@@ -3,7 +3,7 @@
    Kanji: Step 1–3 (pp.2–118). Goi: 第1部・第2部・模擬試験 (pp.2–189).
    Bunpo: 第1部 I–IV, 第2部, 第3部, 模擬試験 (pp.8–207). Dokkai: 第1部–第3部, 模擬試験 (pp.4–). Chokai: 問題紹介, 実力養成編 Ⅰ–Ⅵ, 模擬試験 (pp.2–103). */
 window.N2_PLAN = {
-  notice: "**Days 1–14 are ready; Days 15–20 are being filled in.** All CD audio plays inside the lessons. For 聴解 tracks from CD A, which you don't have, the site uses a computer read-aloud of the book's printed script.",
+  notice: "**All 20 days are ready, for all five books.** All CD audio plays inside the lessons. For 聴解 tracks from CD A, which you don't have, the site uses a computer read-aloud of the book's printed script.",
   days: [
     { kanji: "pp.2–6 送り仮名, 第1–4回", goi: "1章1課 親類・友人・知人 (pp.2–5)", bunpo: "1課 ～とき・～直後に (pp.8–11)", dokkai: "1部1-1) 対比 例題1–3 (pp.4–9)", chokai: "問題紹介 1 課題理解・2 ポイント理解 (pp.2–5)" },
     { kanji: "pp.7–11 第5–9回", goi: "1章2課 人の性格・特徴, 3課 人に対する感情・行動 (pp.6–13)", bunpo: "2課 ～している(進行中), 3課 ～後で (pp.12–19)", dokkai: "1部1-1) 対比 練習問題 (pp.10–13)", chokai: "問題紹介 3 概要理解・4 即時応答・5 統合理解 (pp.6–12)" },
@@ -24,6 +24,6 @@ window.N2_PLAN = {
     { kanji: "pp.102–107 第51–53回", goi: "6章1課 慣用表現①, 2課 慣用表現② (pp.148–159)", bunpo: "第2部2・3課, 第3部1・2課 (pp.142–157)", dokkai: "3部2. 主張理解(長文) (pp.132–146)", chokai: "Ⅴ-5, 確認問題 (pp.82–84)" },
     { kanji: "pp.108–111 総合問題2, チャレンジ 接辞③", goi: "7章1課 二つの言葉をプラス, 2課 (pp.160–171)", bunpo: "第3部3–6課 (pp.158–173)", dokkai: "3部3. 統合理解 (pp.147–160)", chokai: "Ⅵ 統合理解 問題形式, 1 (pp.85–89)" },
     { kanji: "pp.112–115 広がる漢字の知識3–4", goi: "7章3課 単語の後ろに漢字, 4課 形容詞から作る動詞と名詞 (pp.172–185)", bunpo: "第3部7–10課 (pp.174–189)", dokkai: "3部4. 情報検索 (pp.161–180)", chokai: "Ⅵ-2, 確認問題 (pp.90–95)" },
-    { kanji: "pp.116–118 チャレンジ 音の変化・読解, final review", goi: "模擬試験 第1回・第2回 (pp.186–189)", bunpo: "第3部11・12課, 模擬試験 第1回・第2回 (pp.190–207)", dokkai: "模擬試験 (pp.181–)", chokai: "模擬試験 (pp.96–103)" }
+    { kanji: "pp.116–121 チャレンジ 音の変化・読解", goi: "模擬試験 第1回・第2回 (pp.186–189)", bunpo: "第3部11・12課, 模擬試験 第1回・第2回 (pp.190–207)", dokkai: "模擬試験 問題1–11 (pp.181–197)", chokai: "模擬試験 (pp.96–103)" }
   ]
 };

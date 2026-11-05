@@ -1,6 +1,6 @@
 # Shinkanzen Master N2 · 20 Days
 
-A static study site that splits the five 新完全マスター N2 books (漢字, 語彙, 文法, 読解) into 20 days. Each day has one slice of every book, side by side.
+A static study site that splits the five 新完全マスター N2 books (漢字, 語彙, 文法, 読解, 聴解) into 20 days. Each day has one slice of every book, side by side.
 
 - Open `index.html` in a browser. No build step, no server needed.
 - Progress (done marks, quiz answers, furigana on/off) is saved in the browser's localStorage.
@@ -21,17 +21,17 @@ Browsers block audio on `file://` pages in some setups; if a player stays silent
 
 ## Content
 
-| Day | Status |
+| Days | Status |
 | --- | --- |
-| 1 | Complete: Kanji pp.2–6, Goi 1章1課, Bunpo 1課, Dokkai 対比 例題1–3 |
-| 2–20 | Planned pages listed in `data/plan.js` |
+| 1–20 | Complete in all five books, from the first page of each book to its 模擬試験 (page numbers per day are in `data/plan.js`) |
 
-Book text is transcribed from the scanned PDFs page by page. Answers for Goi, Bunpo and Dokkai come from the books' own answer keys. The Kanji PDF has no answer booklet, so Kanji answers are written by hand and the CD dictation parts are input boxes with the CD player above them.
+Book text is transcribed from the scanned PDFs page by page. Answers for Goi, Bunpo and Dokkai come from the books' own answer keys (別冊). The Kanji PDF has no answer booklet, so Kanji answers are written by hand and the CD dictation parts are input boxes with the CD player above them. The Chokai PDF has no answer booklet either: where the book prints a script and answer (例題), the site uses it; for the other CD B tracks the script was transcribed from the CD and the answer is worked out from it, and each of those blocks says so.
 
 ## Files
 
 - `data/plan.js` — the 20-day split (book page numbers)
-- `data/day01-*.js` — Day 1 content, one file per book
+- `data/dayNN-<book>.js` — one file per day and book, built from `tools/src/dNN_<book>.py` with `python3 tools/build_day.py`
+- `index.html` loads every data file; run `python3 tools/update_index.py` after adding one
 - `js/app.js` — renderer, quizzes, progress
 - `css/style.css` — styles (light and dark)
 - `tools/build_preview.py` — bundles everything into one HTML file for sharing
